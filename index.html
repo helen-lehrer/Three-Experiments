@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Name</title>
+</head>
+<body>
+<script type="module">
+  import * as THREE from '../../build/three.module.js';
+
+  function main() {
+  const canvas = document.querySelector('#c');
+  const renderer = new THREE.WebGLRenderer({canvas});
+  }
+//camera
+const fov = 75;
+const aspect = 2;  // the canvas default
+const near = 0.1;
+const far = 5;
+const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+camera.position.z = 2;
+//scene
+const scene = new THREE.Scene();
+//BoxGeometry
+const boxWidth = 1;
+const boxHeight = 1;
+const boxDepth = 1;
+const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+//basic material
+const material = new THREE.MeshBasicMaterial({color: 0x44aa88});
+//mesh
+const cube = new THREE.Mesh(geometry, material);
+//add mesh to the scene
+scene.add(cube);
+//render the scene
+renderer.render(scene, camera);
+</script>
+
+<canvas id="c"></canvas>
+  <p>hello world</p>
+</body>
+</html>
